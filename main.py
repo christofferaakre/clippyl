@@ -1,6 +1,6 @@
 import requests
 from secrets import client
-from utils import get_game_id, get_timestamp, download_clip, get_todays_date
+from utils import get_game_id, get_timestamp, download_clip, get_todays_date, get_valid_filename
 import os
 from channels import channels
 base_url = 'https://api.twitch.tv/helix/clips'
@@ -13,7 +13,7 @@ for channel in channels:
     
     timestamp = get_timestamp(hours_ago=24)
     date = str(get_todays_date())
-    game_folder = f'clips/{game.replace(":", "")}'
+    game_folder = f'clips/{get_valid_filename(game)}'
 
     if not os.path.isdir(game_folder):
         os.makedirs(game_folder)
@@ -30,7 +30,7 @@ for channel in channels:
 
     for clip in clips:
         title = clip['title']
-        download_clip(clip['thumbnail_url'], f"{folder}/{title}.mp4")
+        download_clip(clip['thumbnail_url'], f"{folder}/{get_valid_filename(title)}.mp4")
         print(title)
 
     #top_clip = clips[0]

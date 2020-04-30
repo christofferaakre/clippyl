@@ -3,6 +3,7 @@ from secrets import client
 from datetime import datetime, timedelta
 import urllib
 import os
+import re
 
 url = 'https://api.twitch.tv/helix/games?'
 
@@ -30,3 +31,7 @@ def download_clip(thumbnail_url: str, location: str):
     """
     clip_url = thumbnail_url.split("-preview")[0] + '.mp4'
     return urllib.request.urlretrieve(clip_url, location)
+
+def get_valid_filename(s):
+    s = str(s).strip().replace(' ', '_')
+    return re.sub(r'(?u)[^-\w.]', '', s)

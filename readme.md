@@ -4,7 +4,7 @@
 2. ~~Download clips and save in specified folder with given filename~~
 3. ~~Combine `.mp4` files into one video~~
 4. ~~Add transitions between clips~~
-5. Add an animated little widget showing streamer name
+5. ~~Add an animated little widget showing streamer name~~ make it look nice
 6. Upload videos using YouTube API
 7. Add section names to YouTube videos using API
 8. Additional programatic video editing
